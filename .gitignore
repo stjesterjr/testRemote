@@ -1,0 +1,14 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dylib
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
