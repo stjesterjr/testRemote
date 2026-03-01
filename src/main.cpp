@@ -15,13 +15,20 @@ struct IsPrintable<T, std::void_t<decltype(
 
 static_assert(IsPrintable<int>{} == true, "");
 
+template<typename T>
+concept Printable = requires (T arg) {
+    IsPrintable<T>{} == true;
+};
 
-template<typename... Args, typename = std::enable_if<IsPrintable<Args>{}...>>
-void print(Args&&... args){
-    (std::cout << ... << args);
+
+
+template<Printable... T>
+void print(T... arg){
+    (std::cout << ... << arg);
 }
 
 int main(){
-    std::cout << "Hi!";
+    print(1,2,3,4,5,6);
+
     return 0;
 }
